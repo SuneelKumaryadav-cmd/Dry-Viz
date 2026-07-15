@@ -2,6 +2,7 @@ import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { ProblemSection } from "@/components/problem-section";
 import { HowItWorks } from "@/components/how-it-works";
+import { FeaturesSection } from "@/components/features-section";
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <Hero />
       <ProblemSection />
       <HowItWorks />
+      <FeaturesSection />
     </main>
   );
 }
