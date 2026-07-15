@@ -1,5 +1,7 @@
 "use client";
-import { Play, Code2, Database, BrainCircuit } from "lucide-react";
+import { Play, BrainCircuit } from "lucide-react";
+import { CodeEditor } from "./code-editor";
+import { VariablesPanel } from "./variables-panel";
 export function DemoSection() {
   return (
     <section className="py-24 bg-zinc-950 relative">
@@ -21,44 +23,9 @@ export function DemoSection() {
           {/* 3-Column Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[500px]">
             
-            {/* LEFT: Fake Code Editor */}
-            <div className="flex flex-col bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden">
-              <div className="flex items-center gap-2 px-4 py-3 bg-white/[0.02] border-b border-white/5">
-                <Code2 className="w-4 h-4 text-zinc-400" />
-                <span className="text-sm font-medium text-zinc-300">Code Editor</span>
-              </div>
-              <div className="flex-1 p-6 flex flex-col gap-3 opacity-50">
-                <div className="w-3/4 h-4 rounded bg-zinc-800" />
-                <div className="w-1/2 h-4 rounded bg-zinc-800 ml-4" />
-                <div className="w-2/3 h-4 rounded bg-zinc-800 ml-4" />
-                <div className="w-1/3 h-4 rounded bg-zinc-800 ml-8" />
-                <div className="w-4/5 h-4 rounded bg-zinc-800 ml-4" />
-                <div className="w-1/4 h-4 rounded bg-zinc-800" />
-              </div>
-            </div>
+           <CodeEditor />
 
-            {/* CENTER: Variables Panel */}
-            <div className="flex flex-col bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden">
-              <div className="flex items-center gap-2 px-4 py-3 bg-white/[0.02] border-b border-white/5">
-                <Database className="w-4 h-4 text-zinc-400" />
-                <span className="text-sm font-medium text-zinc-300">Variables</span>
-              </div>
-              <div className="flex-1 p-6 flex flex-col gap-4 opacity-50">
-                <div className="flex justify-between items-center pb-2 border-b border-zinc-800/50">
-                  <div className="w-1/4 h-3 rounded bg-zinc-700" />
-                  <div className="w-1/4 h-3 rounded bg-blue-900" />
-                </div>
-                <div className="flex justify-between items-center pb-2 border-b border-zinc-800/50">
-                  <div className="w-1/3 h-3 rounded bg-zinc-700" />
-                  <div className="w-1/5 h-3 rounded bg-emerald-900" />
-                </div>
-                <div className="flex justify-between items-center pb-2 border-b border-zinc-800/50">
-                  <div className="w-1/5 h-3 rounded bg-zinc-700" />
-                  <div className="w-1/3 h-3 rounded bg-purple-900" />
-                </div>
-              </div>
-            </div>
-
+           <VariablesPanel />
             {/* RIGHT: AI Explanation */}
             <div className="flex flex-col bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden">
               <div className="flex items-center gap-2 px-4 py-3 bg-white/[0.02] border-b border-white/5">
