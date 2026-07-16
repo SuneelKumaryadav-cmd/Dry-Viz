@@ -1,6 +1,11 @@
 import React from "react";
+import type { ExecutionState } from "./demo-section";
 
-export function CodeEditor() {
+interface CodeEditorProps {
+  executionState: ExecutionState;
+}
+
+export function CodeEditor({ executionState }: CodeEditorProps) {
   const codeLines = [
     {
       num: 1,
@@ -53,7 +58,6 @@ export function CodeEditor() {
           <span className="text-orange-400">2</span>)
         </>
       ),
-      active: true,
     },
     {
       num: 6,
@@ -113,34 +117,38 @@ export function CodeEditor() {
       {/* Editor Body */}
       <div className="flex-1 py-4 overflow-x-auto">
         <div className="min-w-max flex flex-col">
-          {codeLines.map((line) => (
-            <div
-              key={line.num}
-              className={`flex w-full group ${
-                line.active
-                  ? "bg-blue-500/[0.15] border-l-2 border-blue-500"
-                  : "border-l-2 border-transparent hover:bg-white/[0.02]"
-              }`}
-            >
-              {/* Line Number */}
+          {codeLines.map((line) => {
+            const isActive = executionState.currentLine === line.num;
+            
+            return (
               <div
-                className={`w-12 sm:w-16 flex-shrink-0 text-right pr-4 select-none ${
-                  line.active ? "text-blue-400 font-medium" : "text-zinc-600"
+                key={line.num}
+                className={`flex w-full group ${
+                  isActive
+                    ? "bg-blue-500/[0.15] border-l-2 border-blue-500"
+                    : "border-l-2 border-transparent hover:bg-white/[0.02]"
                 }`}
               >
-                {line.num}
-              </div>
+                {/* Line Number */}
+                <div
+                  className={`w-12 sm:w-16 flex-shrink-0 text-right pr-4 select-none ${
+                    isActive ? "text-blue-400 font-medium" : "text-zinc-600"
+                  }`}
+                >
+                  {line.num}
+                </div>
 
-              {/* Code */}
-              <div
-                className={`flex-1 whitespace-pre pr-4 ${
-                  line.active ? "text-zinc-100" : "text-zinc-300"
-                }`}
-              >
-                {line.code || " "}
+                {/* Code */}
+                <div
+                  className={`flex-1 whitespace-pre pr-4 ${
+                    isActive ? "text-zinc-100" : "text-zinc-300"
+                  }`}
+                >
+                  {line.code || " "}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
